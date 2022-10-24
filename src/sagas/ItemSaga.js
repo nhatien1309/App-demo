@@ -8,8 +8,6 @@ import { testApi } from '../api'
 function* handleGetListItems() {
 
     try {
-        // const res = "an cuc"
-
         const res = yield testApi.getList()
         console.log("ressss", res.listItem);
         yield put(ItemAction.getListSuccess({
