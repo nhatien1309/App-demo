@@ -1,12 +1,9 @@
-import { put , takeEvery, takeLatest} from 'redux-saga/effects'
+import { put , takeEvery} from 'redux-saga/effects'
 import { ItemAction } from '../actions'
 import  { itemActions } from '../contants'
 import { testApi } from '../api'
 
-
-
 function* handleGetListItems() {
-
     try {
         const res = yield testApi.getList()
         console.log("ressss", res.listItem);
@@ -21,7 +18,6 @@ function* handleGetListItems() {
      console.log(error)
     }
 }
-
 
 function* handleCreateItem({ payload }) {
    
@@ -51,7 +47,6 @@ function* handleDeleteItem({ payload }) {
     }
 }
 
-
 function* handleUpdateItem({ payload }) {
     console.log("djcdjcdjndsjncd",payload)
     try {
@@ -64,6 +59,7 @@ function* handleUpdateItem({ payload }) {
         }))
     }
 }
+
 const itemSaga = [
     takeEvery(itemActions.itemActions.GET_ITEM_REQUEST , handleGetListItems),
     takeEvery(itemActions.itemActions.CREATE_ITEM_REQUEST, handleCreateItem),

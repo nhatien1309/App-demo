@@ -1,89 +1,27 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  View,
-  Button,
-  Text,
-  ScrollView,
-} from 'react-native';
-import {useEffect, useState} from 'react';
-import {useItem} from '../hooks/useItem';
+import {SafeAreaView, StyleSheet, View, ScrollView} from 'react-native';
+import {DataTable} from 'react-native-paper';
+
+import MyComponent from '../component/footer';
+import ItemScreen from './ItemScreen';
 
 const Welcome = () => {
-  useEffect(() => {
-    handleGet();
-  }, []);
-  const {handleGet, handleCreate, handleDelete, handleUpdate, list} = useItem();
-
-  const [name, setName] = useState('');
-  const [nameUpdate, setNameUpdate] = useState('');
-  console.log('name', name);
-  const [id, setId] = useState('');
-
-  let ListItem = [];
-  ListItem = list?.map((item, key) => {
-    return (
-      <SafeAreaView>
-        <ScrollView>
-          <View key={key + 1} style={styles.list}>
-            <View>
-              <Text>{item.name}</Text>
-              <Text>{item._id}</Text>
-            </View>
-            <View>
-              <Text>
-                <Button
-                  title="Delete"
-                  onPress={() => handleDelete({id: item._id})}
-                />
-              </Text>
-            </View>
-            <View>
-              <Text>
-                <Button
-                  title="choose"
-                  onPress={() => {
-                    setId(item._id);
-                    setNameUpdate(item.name);
-                  }}
-                />
-              </Text>
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  });
-
   return (
     <SafeAreaView>
-     
+      <MyComponent />
       <ScrollView style={styles.ScrollView}>
-        <View style={styles.list}>
-          <View style={styles.inputStyle}>
-            <TextInput
-              style={styles.input}
-              onChangeText={setName}
-              value={name}
-            />
-            <Button title="Add" onPress={() => handleCreate({name})} />
-          </View>
-          <View style={styles.inputStyle}>
-            <TextInput
-              style={styles.input}
-              onChangeText={setNameUpdate}
-              value={nameUpdate}
-            />
-            <Button
-              title="Update"
-              onPress={() => handleUpdate({id: id, nameUpdate: nameUpdate})}
-            />
-          </View>
-        </View>
         <View>
-          <View>{ListItem}</View>
+          <DataTable>
+            <DataTable.Header style={styles.table}>
+              <DataTable.Title>User</DataTable.Title>
+              <DataTable.Title>Action</DataTable.Title>
+            </DataTable.Header>
+            <View>
+              <ScrollView>
+                <ItemScreen />
+              </ScrollView>
+            </View>
+          </DataTable>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -91,24 +29,18 @@ const Welcome = () => {
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    width:"70%",
-  },
   ScrollView: {
     marginHorizontal: 20,
   },
-  inputStyle: {
-    flexDirection: 'row',
-  },
   list: {
-    borderStyle: 'solid',
-    margin: 24,
+    margin: 10,
     padding: 30,
     backgroundColor: 'pink',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  table: {
+    paddingLeft: 50,
   },
 });
 

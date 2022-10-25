@@ -1,9 +1,11 @@
 import Welcome from './wellcome';
-import Example from './ItemScreen'
+import MyComponent from './ItemScreen';
 
 const screens = [
-  
-
+  {
+    name: 'item',
+component: 'MyComponent'
+  },
   {
     name: 'welcome',
     component: Welcome
