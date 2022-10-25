@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, View, ScrollView} from 'react-native';
 import {DataTable} from 'react-native-paper';
 
-import MyComponent from '../component/footer';
+import MyComponent from '../component/TopBar';
 import ItemScreen from './ItemScreen';
 
 const Welcome = () => {

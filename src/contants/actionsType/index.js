@@ -1,3 +1,3 @@
-import * as itemActions from './item.action';
+import * as itemActions from './ItemActions';
 
 export {itemActions};

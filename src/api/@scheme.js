@@ -1,22 +1,6 @@
 import { REST_API_METHOD as METHOD, BASE_URL } from '../contants'
 
 const API_SCHEME = {
-    // update when apply real authen api
-    // AUTHEN: {
-    //     VALIDATE_TOKEN: {
-    //         url: `${BASE_URL}/auth`,
-    //         method: METHOD.GET
-    //     },
-    //     LOGIN: {
-    //         url: `${BASE_URL}/auth`,
-    //         method: METHOD.GET
-    //     },
-    //     LOGOUT: {
-    //         url: `${BASE_URL}/logout`,
-    //         method: METHOD.POST
-    //     }
-    // },
-    // business api
     ITEMS: {
         GET_LIST: {
             url: `${BASE_URL}/name`,
